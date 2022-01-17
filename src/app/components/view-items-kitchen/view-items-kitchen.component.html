@@ -1,21 +1,27 @@
-<ul *ngFor="let item of allItems">
-    <div>
-        <li>Name: {{item.title}}</li>
-        <li>
-            <div *ngIf="item.status == 1; else elseBlock">
-                <p>Item is Available!</p>
-                <button (click)="setUnavailable(item)">Set to unavailable</button>
-            </div>
-            <ng-template #elseBlock>
-                <p>Item is not available!</p>
-                <button (click)="setAvailable(item)">Set to available</button>
-            </ng-template>
-        </li>
-        <div *ngFor="let Itemcategory of item.category">
-            <div *ngFor="let category of categories">
-                <div *ngIf="category.categoryId==Itemcategory">{{category.title}}</div>
-            </div>
-        </div>
-        <!-- TODO Change Categories -->
+<div *ngFor="let item of allItems" style="left: 20">
+    <h2>{{item.title}}</h2>
+    <span>Update Categories:</span>
+    <div *ngFor="let Itemcategory of item.category">
+        <mat-checkbox name="cat" [checked]=Itemcategory color="primary" [value]="Itemcategory" (change)="checkCheckBoxvalue($event)"> {{categories[Itemcategory-1].title}}</mat-checkbox>
     </div>
-</ul>
+    <div *ngFor="let cat of categories">
+        <div *ngIf="!item.category.includes(cat.categoryId)">
+            <mat-checkbox name="cat" [checked]=!cat.categoryId [value]="cat.categoryId" (change)="checkCheckBoxvalue($event)"> {{cat.title}}
+            </mat-checkbox>
+        </div>
+    </div>
+    <button mat-raised-button (click)="updateCategories(item)">Update Categories</button>
+
+    <div *ngIf="item.status == 1; else elseBlock">
+        <span>Item is Available! </span>
+        <button mat-raised-button (click)="setUnavailable(item)" color="warn">Set to unavailable</button>
+    </div>
+
+    <ng-template #elseBlock>
+        <div>
+            <span>Item is not Available! </span>
+            <button mat-raised-button (click)="setAvailable(item)" color="primary">Set to available</button>
+        </div>
+    </ng-template>
+    <br>
+</div>

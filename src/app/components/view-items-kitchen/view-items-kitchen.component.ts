@@ -12,6 +12,9 @@ export class ViewItemsKitchenComponent implements OnInit
   selItem: any;
   allItems: any = []
   categories: any = []
+  selCat: number[] = [];
+  unselCat: number[] = [];
+  totalCat: number[] = [];
   constructor(private apiService: APIService) { }
 
   ngOnInit(): void
@@ -30,9 +33,29 @@ export class ViewItemsKitchenComponent implements OnInit
     item.status = 2
     this.apiService.updateMenuItem(item).subscribe()
   }
+  checkCheckBoxvalue(event: any)
+  {
+    if (event.checked)
+    {
+      this.selCat.push(event.source.value)
+      this.unselCat = this.unselCat.filter(item => item !== event.source.value)
+    }
+    else
+    {
+      this.selCat = this.selCat.filter(item => item !== event.source.value)
+      this.unselCat.push(event.source.value)
+    }
+  }
 
   updateCategories(item: any)
   {
+    this.totalCat = item.category
 
+    this.totalCat = this.totalCat.concat(this.selCat.filter(item => !this.totalCat.includes(item)))
+    this.totalCat = this.totalCat.filter(item => !this.unselCat.includes(item))
+
+    item.category = this.totalCat
+
+    this.apiService.updateMenuItem(item).subscribe()
   }
 }

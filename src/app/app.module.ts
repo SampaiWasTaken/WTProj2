@@ -7,6 +7,9 @@ import { ViewItemsKitchenComponent } from './components/view-items-kitchen/view-
 import { LoginComponent } from './components/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ViewOrdersKitchenComponent } from './components/view-orders-kitchen/view-orders-kitchen.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { ViewOrdersKitchenComponent } from './components/view-orders-kitchen/vie
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    MatCheckboxModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
