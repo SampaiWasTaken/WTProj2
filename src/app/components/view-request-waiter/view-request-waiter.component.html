@@ -1,0 +1,9 @@
+<p>view-request-waiter works!</p>
+
+<ul>
+<div *ngFor="let request of allRequests">
+<li>
+    Table ID: {{request.tableID}} <button (click)="requestProcessed(request.guestReguestID)" >mark as "processed"</button>
+</li>
+</div>
+</ul>

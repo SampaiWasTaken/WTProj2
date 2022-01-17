@@ -22,6 +22,18 @@ export class APIService
   {
     return this.httpClient.get(`${this.API}/menuItems`, httpOptions)
   }
+  
+    getMenuItemByID(id: number)
+  {
+    return this.httpClient.get(`${this.API}/menuItems/${id}`, httpOptions)
+  }
+
+  getStatusDesc() //what each status number -> 1 = open,...
+  {
+    return this.httpClient.get(`${this.API}/orders/status`, httpOptions)
+  }
+
+  getOrders(){}
 
   updateMenuItem(item: any)
   {
@@ -32,6 +44,20 @@ export class APIService
   {
     return this.httpClient.get(`${this.API}/orders`, httpOptions)
   }
+
+  getRequests()
+  {
+    return this.httpClient.get(`${this.API}/guestrequest`, httpOptions)
+  }
+
+  
+  setRequest(request: any)
+  {
+    return this.httpClient.put(`${this.API}/guestrequest`, request, httpOptions).pipe()
+  }
+
+
+  
 
   updateOrdersKitchen(orderId: number)
   {

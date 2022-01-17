@@ -5,7 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ViewItemsKitchenComponent } from './components/view-items-kitchen/view-items-kitchen.component'
 import { LoginComponent } from './components/login/login.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ViewOrderWaiterComponent } from './components/view-order-waiter/view-order-waiter.component';
+import { ViewRequestWaiterComponent } from './components/view-request-waiter/view-request-waiter.component';
 import { ViewOrdersKitchenComponent } from './components/view-orders-kitchen/view-orders-kitchen.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -16,13 +17,14 @@ import { MatButtonModule } from '@angular/material/button';
     AppComponent,
     ViewItemsKitchenComponent,
     LoginComponent,
+    ViewOrderWaiterComponent,
+    ViewRequestWaiterComponent,
     ViewOrdersKitchenComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    NgbModule,
     MatCheckboxModule,
     BrowserAnimationsModule,
     MatButtonModule
