@@ -7,6 +7,10 @@ import { ViewItemsKitchenComponent } from './components/view-items-kitchen/view-
 import { LoginComponent } from './components/login/login.component';
 import { ViewOrderWaiterComponent } from './components/view-order-waiter/view-order-waiter.component';
 import { ViewRequestWaiterComponent } from './components/view-request-waiter/view-request-waiter.component';
+import { ViewOrdersKitchenComponent } from './components/view-orders-kitchen/view-orders-kitchen.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -15,10 +19,15 @@ import { ViewRequestWaiterComponent } from './components/view-request-waiter/vie
     LoginComponent,
     ViewOrderWaiterComponent,
     ViewRequestWaiterComponent
+    ViewOrdersKitchenComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    MatCheckboxModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,12 @@
+{
+	"favorites.resources": [
+		{
+			"filePath": "src\\app\\components",
+			"group": "Default"
+		},
+		{
+			"filePath": "src\\app\\services\\api.service.ts",
+			"group": "Default"
+		}
+	]
+}
