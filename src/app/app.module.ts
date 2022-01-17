@@ -5,12 +5,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ViewItemsKitchenComponent } from './components/view-items-kitchen/view-items-kitchen.component'
 import { LoginComponent } from './components/login/login.component';
+import { ViewOrderWaiterComponent } from './components/view-order-waiter/view-order-waiter.component';
+import { ViewRequestWaiterComponent } from './components/view-request-waiter/view-request-waiter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewItemsKitchenComponent,
-    LoginComponent
+    LoginComponent,
+    ViewOrderWaiterComponent,
+    ViewRequestWaiterComponent
   ],
   imports: [
     BrowserModule,
