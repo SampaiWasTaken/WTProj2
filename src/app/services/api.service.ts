@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDIxNzA0NjMsImV4cCI6MTY0MjQyOTY2M30.JbNYJ1jtrvQBq_HYOEGsZIrxp5ylWliUBnFZySkfg_s'
+    Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDI0MTg1NTksImV4cCI6MTY0MjY3Nzc1OX0.LwVt86_XnqcuH0umMMWbbUDUraitFDE6u9JT7_NgKqU'
   })
 };
 
@@ -21,5 +21,25 @@ export class APIService
   getMenuItems()
   {
     return this.httpClient.get(`${this.API}/menuItems`, httpOptions)
+  }
+
+  updateMenuItem(item: any)
+  {
+    return this.httpClient.put(`${this.API}/menuItems/${item.itemId}`, item, httpOptions)
+  }
+
+  getOrdersKitchen()
+  {
+    return this.httpClient.get(`${this.API}/orders`, httpOptions)
+  }
+
+  updateOrdersKitchen(orderId: number)
+  {
+    return this.httpClient.put(`${this.API}/orders/${orderId}`, httpOptions)
+  }
+
+  getCategories()
+  {
+    return this.httpClient.get(`${this.API}/categories`, httpOptions)
   }
 }

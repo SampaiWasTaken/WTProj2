@@ -1,5 +1,21 @@
-<ul>
-    <div *ngFor="let item of allItems">
+<ul *ngFor="let item of allItems">
+    <div>
         <li>Name: {{item.title}}</li>
+        <li>
+            <div *ngIf="item.status == 1; else elseBlock">
+                <p>Item is Available!</p>
+                <button (click)="setUnavailable(item)">Set to unavailable</button>
+            </div>
+            <ng-template #elseBlock>
+                <p>Item is not available!</p>
+                <button (click)="setAvailable(item)">Set to available</button>
+            </ng-template>
+        </li>
+        <div *ngFor="let Itemcategory of item.category">
+            <div *ngFor="let category of categories">
+                <div *ngIf="category.categoryId==Itemcategory">{{category.title}}</div>
+            </div>
+        </div>
+        <!-- TODO Change Categories -->
     </div>
 </ul>
