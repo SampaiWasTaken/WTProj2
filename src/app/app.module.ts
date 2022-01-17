@@ -18,7 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
     ViewItemsKitchenComponent,
     LoginComponent,
     ViewOrderWaiterComponent,
-    ViewRequestWaiterComponent
+    ViewRequestWaiterComponent,
     ViewOrdersKitchenComponent
   ],
   imports: [

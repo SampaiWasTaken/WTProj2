@@ -13,14 +13,16 @@ export class ViewOrderWaiterComponent implements OnInit {
 
   ngOnInit(): void
   {
+    /*
     this.apiService.getOrders().subscribe(res =>
     {
       this.allOrders = res;
       this.allOrders = this.allOrders.filter((o: any) => {return o.status !== 3})
 
     })
+    */
 
-    this.apiService.getMenuItems().subscribe(res =>
+    this.apiService.getMenuItems().subscribe((res: any) =>
     {
       this.allItemsInformation = res;
     })
