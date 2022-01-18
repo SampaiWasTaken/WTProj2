@@ -3,18 +3,19 @@
 <ul>
     <div *ngFor="let order of allOrders" (click)="onSelect(order.orderId)">
         <li>Order ID: {{order.orderId}}
-
             <div *ngIf="requestedItemData !== undefined && requestedItemData.orderId === order.orderId">
                 <ul>
                     <div *ngFor="let orderedItem of requestedItemData.orderedItems">
-                        <li> Name: {{orderedItem.itemDetails.title}}item id: {{orderedItem.itemId}}, <ng-container *ngFor="let status of statusDesc"><ng-container *ngIf="status.orderStatusID === orderedItem.status"> Status: {{status.name}}</ng-container></ng-container>
+                        <li> Name: {{orderedItem.itemDetails.title}}item id: {{orderedItem.itemId}},
+                            <ng-container *ngFor="let status of statusDesc">
+                                <ng-container *ngIf="status.orderStatusID === orderedItem.status"> Status: {{status.name}}
+                                </ng-container>
+                            </ng-container>
 
                         </li>
                     </div>
                 </ul>
             </div>
-
         </li>
     </div>
 </ul>
-

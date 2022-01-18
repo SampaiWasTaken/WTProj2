@@ -1,1 +1,32 @@
-<div *ngFor="let order of orders">{{order}}</div>
+<div class="item-container">
+    <div *ngFor="let order of orders">
+        <mat-card class="card">
+            <mat-card-title>Details for Order #{{order.orderId}}</mat-card-title>
+            <mat-card-content>
+                <ng-container *ngFor="let item of order.orderedItems">
+                    <ng-container *ngFor="let i of menuItems">
+                        <ng-container *ngIf="i.itemId === item.itemId">
+                            <h2>{{i.title}}</h2>
+                            <p>Amount: {{item.number}}</p>
+                            <p>Status: {{item.status}}</p>
+                            <mat-radio-group [name]=item.itemId (change)="updateStatusUpdate(item)">
+                                <mat-radio-button value="2" style="margin-right: 8px">In Production
+                                </mat-radio-button>
+                                <mat-radio-button value="3">Ready to serve</mat-radio-button><br>
+                            </mat-radio-group>
+                            <mat-form-field appearance="fill" class="formField">
+                                <mat-label>Leave a comment</mat-label>
+                                <textarea matInput placeholder="What would you like our guest to know"></textarea>
+                            </mat-form-field>
+                        </ng-container>
+                    </ng-container>
+                    <mat-divider></mat-divider>
+                </ng-container>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button (click)="addComment($event)">Add Comment</button>
+                <button mat-raised-button color="primary">Change Status</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

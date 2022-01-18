@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDI0MTg1NTksImV4cCI6MTY0MjY3Nzc1OX0.LwVt86_XnqcuH0umMMWbbUDUraitFDE6u9JT7_NgKqU'
+    Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDI1MTA1MzgsImV4cCI6MTY0Mjc2OTczOH0.-FzCfxzQphZNEhh0DRv9kKJyJheJytsKwXVBmBRboEw'
   })
 };
 
@@ -22,8 +22,8 @@ export class APIService
   {
     return this.httpClient.get(`${this.API}/menuItems`, httpOptions)
   }
-  
-    getMenuItemByID(id: number)
+
+  getMenuItemByID(id: number)
   {
     return this.httpClient.get(`${this.API}/menuItems/${id}`, httpOptions)
   }
@@ -33,7 +33,7 @@ export class APIService
     return this.httpClient.get(`${this.API}/orders/status`, httpOptions)
   }
 
-  getOrders(){}
+  getOrders() { }
 
   updateMenuItem(item: any)
   {
@@ -50,18 +50,15 @@ export class APIService
     return this.httpClient.get(`${this.API}/guestrequest`, httpOptions)
   }
 
-  
+
   setRequest(request: any)
   {
     return this.httpClient.put(`${this.API}/guestrequest`, request, httpOptions).pipe()
   }
 
-
-  
-
-  updateOrdersKitchen(orderId: number)
+  updateOrdersKitchen(order: any)
   {
-    return this.httpClient.put(`${this.API}/orders/${orderId}`, httpOptions)
+    return this.httpClient.put(`${this.API}/orders/${order.orderId}`, order, httpOptions)
   }
 
   getCategories()
