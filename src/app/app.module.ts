@@ -11,13 +11,11 @@ import { ViewOrdersKitchenComponent } from './components/view-orders-kitchen/vie
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatButtonModule } from '@angular/material/button';
-
 import { ViewItemsForPickupWaiterComponent } from './components/view-items-for-pickup-waiter/view-items-for-pickup-waiter.component';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
-import {MatExpansionModule} from '@angular/material/expansion';
-import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
@@ -43,8 +41,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatDividerModule,
     MatListModule,
     MatExpansionModule,
-    MatCardModule
-
+    MatCardModule,
     MatTableModule,
     MatDividerModule,
     MatCardModule,
