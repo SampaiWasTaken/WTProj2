@@ -1,5 +1,4 @@
 <p>view-order-waiter works!</p>
-
 <mat-accordion>
     <div *ngFor="let order of allOrders">
       <mat-expansion-panel>
@@ -27,30 +26,4 @@
 </mat-accordion>
 
 
-<!-- 
-OLD TRY
-
-<mat-accordion>
-      <div *ngFor="let order of allOrders" (click)="onSelect(order.orderId)">
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                 Order ID: {{order.orderId}}
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div *ngIf="requestedItemData !== undefined && requestedItemData.orderId === order.orderId">
-                <ul>
-                    <div *ngFor="let orderedItem of requestedItemData.orderedItems">
-                        <li> Name: {{orderedItem.itemDetails.title}}item id: {{orderedItem.itemId}}, <ng-container *ngFor="let status of statusDesc"><ng-container *ngIf="status.orderStatusID === orderedItem.status"> Status: {{status.name}}</ng-container></ng-container>
-
-                        </li>
-                    </div>
-                </ul>
-            </div>
-
-        </mat-expansion-panel>
-    </div>
-</mat-accordion>
-
--->
-
+<

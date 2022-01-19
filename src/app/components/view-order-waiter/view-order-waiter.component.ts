@@ -9,65 +9,61 @@ import { APIService } from '../../services/api.service';
 })
 
 
+
 export class ViewOrderWaiterComponent implements OnInit {
+
 
   allOrders: any = []
   constructor(private apiService: APIService) { }
 
   ngOnInit(): void
   {
-    
+
     this.apiService.getOrdersKitchen().subscribe(res =>
     {
       this.allOrders = res;
-      this.allOrders = this.allOrders.filter((o: any) => {return o.status !== 3})
+      this.allOrders = this.allOrders.filter((o: any) => { return o.status !== 3 })
 
     })
-    
+
 
     this.apiService.getMenuItems().subscribe((res: any) =>
     {
       this.allItemsInformation = res;
     })
-    
+
     this.apiService.getStatusDesc().subscribe(res =>
     {
       this.statusDesc = res;
     })
-
-    /*
-    for(let i = 0; i < this.allOrders.length; i++){
-      for(let j = 0; j < this.allOrders[i].orderedItems.length; j++){
-        this.allOrders[i].orderedItems[j].itemDetails = this.allItemsInformation.filter((o:any)=>{return o.itemId === this.allOrders[i].orderedItems[j].itemId})[0]
-      }
-    }
-    */
-    
-      
   }
 
-  selectedItem ?: any;
-  requestedItemData?:  any;
+  selectedItem?: any;
+  requestedItemData?: any;
   allItemsInformation?: any;
   statusDesc?: any
 
-  onSelect(id : number): void {
+  onSelect(id: number): void
+  {
 
-    if(this.selectedItem === id){
+    if (this.selectedItem === id)
+    {
       this.requestedItemData = undefined
       this.selectedItem = undefined
-    }else{
+    } else
+    {
       this.selectedItem = id;
 
-      this.requestedItemData = this.allOrders.filter((o: any) => {return o.orderId === id})[0];
+      this.requestedItemData = this.allOrders.filter((o: any) => { return o.orderId === id })[0];
 
-      for(let i = 0; i < this.requestedItemData.orderedItems.length; i++){
+      for (let i = 0; i < this.requestedItemData.orderedItems.length; i++)
+      {
         let currentItemId = this.requestedItemData.orderedItems[i].itemId;
-        this.requestedItemData.orderedItems[i].itemDetails = this.allItemsInformation.filter((i:any)=>{return i.itemId === currentItemId})[0]
+        this.requestedItemData.orderedItems[i].itemDetails = this.allItemsInformation.filter((i: any) => { return i.itemId === currentItemId })[0]
 
       }
     }
- 
+
   }
   
 
