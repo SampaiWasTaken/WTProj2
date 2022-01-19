@@ -78,8 +78,7 @@ export class APIService
   orderItemId: number = -1;
   updateOrderItems(order: any, orderItem: any)
   {
-    this.orderItemId = orderItem.itemId;
-    orderItem.remove(orderItem.itemId);
-    return this.httpClient.put(`${this.API}/orders/${order.orderId}/items/${this.orderItemId}`, orderItem, httpOptions)
+    
+    return this.httpClient.put(`${this.API}/orders/${order.orderId}/items/${orderItem.itemId}`, {number : orderItem.number, orderItemSatusID : orderItem.status, text : orderItem.text} , httpOptions)
   }
 }
