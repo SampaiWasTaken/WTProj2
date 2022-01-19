@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatDividerModule,
     MatCardModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/services/api.service';
-import { OrderedItem } from 'src/OrderedItem';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-view-orders-kitchen',
@@ -15,7 +15,7 @@ export class ViewOrdersKitchenComponent implements OnInit
   menuItems: any = []
   allOrders: any = [];
   orders: any = [];
-  updateStatus: number = -1;
+
 
   ngOnInit(): void
   {
@@ -37,14 +37,36 @@ export class ViewOrdersKitchenComponent implements OnInit
     this.apiService.updateOrdersKitchen(order).subscribe();
   }
 
-  addComment(event: any)
+  addComment(order: any)
   {
-    console.log(event.target.value)
+    for (let item of order.orderedItems)
+    {
+      this.apiService.updateOrderItems(order, item).subscribe();
+      console.log("Item ID " + item.itemId + "with text " + item.text)
+    }
   }
 
   updateStatusUpdate(item: any)
   {
-    item.status = item.target.value;
-    console.log(item.status)
+    console.log("changed to " + item.status)
+  }
+
+  updateStatus(order: any)
+  {
+    for (let item of order.orderedItems)
+    {
+      this.apiService.updateOrderItems(order, item).subscribe();
+      console.log("Item ID " + item.itemId + "with status " + item.status)
+    }
+  }
+
+  updateTextUpdate(item: any)
+  {
+    console.log("changed to " + item.text)
+  }
+
+  drop(event: CdkDragDrop<string[]>, order: any)
+  {
+    moveItemInArray(order.orderedItems, event.previousIndex, event.currentIndex);
   }
 }

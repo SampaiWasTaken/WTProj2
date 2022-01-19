@@ -1,29 +1,30 @@
 <p>view-order-waiter works!</p>
-<mat-accordion>
+<mat-accordion style="min-width: 600px;">
     <div *ngFor="let order of allOrders">
-      <mat-expansion-panel>
-          <mat-expansion-panel-header>
-              <mat-panel-title>
-               Order ID: {{order.orderId}}
-              </mat-panel-title>
-          </mat-expansion-panel-header>
-          
-              <ul>
-                  <div *ngFor="let orderedItem of order.orderedItems">
-                      <li>  
-                            id: {{orderedItem.itemId}} 
-                            <br>
-                            <ng-container *ngFor="let itemInfo of allItemsInformation"><ng-container *ngIf="itemInfo.itemId === orderedItem.itemId">Name: {{itemInfo.title}}</ng-container></ng-container>
-                            <br>
-                            <ng-container *ngFor="let status of statusDesc"><ng-container *ngIf="status.orderStatusID === orderedItem.status"> Status: {{status.name}}</ng-container></ng-container>
-                      </li>
-                  </div>
-              </ul>
-        
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Order ID: {{order.orderId}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
 
-      </mat-expansion-panel>
-  </div>
+            <ul>
+                <div *ngFor="let orderedItem of order.orderedItems">
+                    <li>
+                        id: {{orderedItem.itemId}}
+                        <br>
+                        <ng-container *ngFor="let itemInfo of allItemsInformation">
+                            <ng-container *ngIf="itemInfo.itemId === orderedItem.itemId">Name: {{itemInfo.title}}
+                            </ng-container>
+                        </ng-container>
+                        <br>
+                        <ng-container *ngFor="let status of statusDesc">
+                            <ng-container *ngIf="status.orderStatusID === orderedItem.status"> Status: {{status.name}}
+                            </ng-container>
+                        </ng-container>
+                    </li>
+                </div>
+            </ul>
+        </mat-expansion-panel>
+    </div>
 </mat-accordion>
-
-
-<
