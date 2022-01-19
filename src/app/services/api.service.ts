@@ -56,7 +56,7 @@ export class APIService
   setRequest(request: any)
   {
     //console.log("Why isnt this working the first time sheeesh")
-    return this.httpClient.put(`${this.API}/guestrequest/${request.guestReguestID}`, new Request(3, request.tableID) , httpOptions);
+    return this.httpClient.put(`${this.API}/guestrequest/${request.guestReguestID}`, new Request(3, request.tableID), httpOptions);
 
   }
 
@@ -75,10 +75,9 @@ export class APIService
     return this.httpClient.get(`${this.API}/orders/${order.orderId}/items`)
   }
 
-  orderItemId: number = -1;
   updateOrderItems(order: any, orderItem: any)
   {
-    
-    return this.httpClient.put(`${this.API}/orders/${order.orderId}/items/${orderItem.itemId}`, {number : orderItem.number, orderItemSatusID : orderItem.status, text : orderItem.text} , httpOptions)
+
+    return this.httpClient.put(`${this.API}/orders/${order.orderId}/items/${orderItem.itemId}`, { number: orderItem.number, orderItemSatusID: orderItem.status, text: orderItem.text }, httpOptions)
   }
 }
