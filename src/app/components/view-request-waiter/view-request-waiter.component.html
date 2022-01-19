@@ -1,9 +1,11 @@
 <p>view-request-waiter works!</p>
-
-<ul>
-<div *ngFor="let request of allRequests">
-<li>
-    Table ID: {{request.tableID}} <button (click)="requestProcessed(request.guestReguestID)" >mark as "processed"</button>
-</li>
-</div>
-</ul>
+<h1>Requests from Table with:</h1>
+<ng-container *ngFor="let request of allRequests; let rowIndex=index">
+<mat-card>
+    <mat-card-title>Table ID: {{request.tableID}}</mat-card-title>
+    <mat-card-actions align="end">
+      <button mat-raised-button (click)="requestProcessed(request)">mark as "processed"</button>
+    </mat-card-actions>
+  </mat-card>
+  <br>
+</ng-container>

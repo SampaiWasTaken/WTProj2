@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Request } from '../request';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -35,6 +36,7 @@ export class APIService
 
   getOrders() { }
 
+
   updateMenuItem(item: any)
   {
     return this.httpClient.put(`${this.API}/menuItems/${item.itemId}`, item, httpOptions)
@@ -53,7 +55,9 @@ export class APIService
 
   setRequest(request: any)
   {
-    return this.httpClient.put(`${this.API}/guestrequest`, request, httpOptions).pipe()
+    //console.log("Why isnt this working the first time sheeesh")
+    return this.httpClient.put(`${this.API}/guestrequest/${request.guestReguestID}`, new Request(3, request.tableID) , httpOptions);
+
   }
 
   updateOrdersKitchen(order: any)

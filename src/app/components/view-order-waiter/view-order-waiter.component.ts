@@ -5,9 +5,13 @@ import { APIService } from '../../services/api.service';
   selector: 'app-view-order-waiter',
   templateUrl: './view-order-waiter.component.html',
   styleUrls: ['./view-order-waiter.component.css']
+  
 })
-export class ViewOrderWaiterComponent implements OnInit
-{
+
+
+
+export class ViewOrderWaiterComponent implements OnInit {
+
 
   allOrders: any = []
   constructor(private apiService: APIService) { }
@@ -32,7 +36,6 @@ export class ViewOrderWaiterComponent implements OnInit
     {
       this.statusDesc = res;
     })
-
   }
 
   selectedItem?: any;
@@ -62,6 +65,7 @@ export class ViewOrderWaiterComponent implements OnInit
     }
 
   }
+  
 
 
 }
