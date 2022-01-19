@@ -65,4 +65,17 @@ export class APIService
   {
     return this.httpClient.get(`${this.API}/categories`, httpOptions)
   }
+
+  getOrderItems(order: any)
+  {
+    return this.httpClient.get(`${this.API}/orders/${order.orderId}/items`)
+  }
+
+  orderItemId: number = -1;
+  updateOrderItems(order: any, orderItem: any)
+  {
+    this.orderItemId = orderItem.itemId;
+    orderItem.remove(orderItem.itemId);
+    return this.httpClient.put(`${this.API}/orders/${order.orderId}/items/${this.orderItemId}`, orderItem, httpOptions)
+  }
 }
