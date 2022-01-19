@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { APIService } from '../../services/api.service';
+import { Request } from 'src/app/request';
 
 @Component({
   selector: 'app-view-request-waiter',
@@ -9,7 +10,9 @@ import { APIService } from '../../services/api.service';
 export class ViewRequestWaiterComponent implements OnInit {
 
   allRequests: any = []
-  constructor(private apiService: APIService) { }
+  myreq?: Request
+  constructor(private apiService: APIService,
+    private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.apiService.getRequests().subscribe(res =>
@@ -20,9 +23,16 @@ export class ViewRequestWaiterComponent implements OnInit {
   
       })
   }
+  
+  requestProcessed(req: any){
 
-  requestProcessed(reqId: number){
-      console.log(reqId)
+  // WHY ISNT THE *NGFOR NOT UPDATING WTFFFFFFFFFFFFFFFFFFFF
+  //https://stackoverflow.com/questions/53203224/my-view-does-not-update-when-i-change-my-array-in-ngfor
+  //no idea seemed iteresting the Stackoverflow link
+
+  //BRUH WHY IS IT NOW WORKING WHEN I CALL NGONINIT AGAIN WTF
+    this.apiService.setRequest(req).subscribe( bruh => {this.ngOnInit()});
+
   }
 
 }

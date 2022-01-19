@@ -5,7 +5,10 @@ import { APIService } from '../../services/api.service';
   selector: 'app-view-order-waiter',
   templateUrl: './view-order-waiter.component.html',
   styleUrls: ['./view-order-waiter.component.css']
+  
 })
+
+
 export class ViewOrderWaiterComponent implements OnInit {
 
   allOrders: any = []
@@ -31,6 +34,15 @@ export class ViewOrderWaiterComponent implements OnInit {
     {
       this.statusDesc = res;
     })
+
+    /*
+    for(let i = 0; i < this.allOrders.length; i++){
+      for(let j = 0; j < this.allOrders[i].orderedItems.length; j++){
+        this.allOrders[i].orderedItems[j].itemDetails = this.allItemsInformation.filter((o:any)=>{return o.itemId === this.allOrders[i].orderedItems[j].itemId})[0]
+      }
+    }
+    */
+    
       
   }
 
@@ -57,6 +69,7 @@ export class ViewOrderWaiterComponent implements OnInit {
     }
  
   }
+  
 
 
 }
