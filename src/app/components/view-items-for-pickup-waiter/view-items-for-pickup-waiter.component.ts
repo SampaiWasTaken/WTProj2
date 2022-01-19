@@ -23,17 +23,16 @@ export class ViewItemsForPickupWaiterComponent implements OnInit {
     this.apiService.getOrdersKitchen().subscribe(res =>
     {
       this.allOrders = res;
+
       //checks if a single item isnt delivered
       this.allOrders = this.allOrders.filter((o: any) => {
         let addOrderBool = false;
         for(let i = 0; i<o.orderedItems.length; i++){
-          if(o.orderedItems[i].status !== 3){
+          if(o.orderedItems[i].status === 3 || o.orderedItems[i].status === 4){
             addOrderBool =  true;
           }
         }
-
         return addOrderBool;
-        
       }) // Change === LATER!!!!
     })
     
@@ -42,34 +41,22 @@ export class ViewItemsForPickupWaiterComponent implements OnInit {
     {
       this.statusDesc = res;
     })
-
-    /*
-    for(let j = 0; j<this.allOrders.length; j++){
-      for(let i = 0; i < this.allOrders[j].orderedItems.length; i++){
-        
-        this.allOrders[j].orderedItems[i]["itemDetails"] = this.allItemsInformation.filter((i:any)=>{return i.itemId === this.allOrders[j].orderedItems[i].itemId})[0]
-        this.allOrders[j].orderedItems[i]
-    }
-    }
-    */
-    
       
   }
 
-  
-  onClick() {
-    console.log(this.allOrders)
-    }
-
-    Button_intransit(){
+    Button_intransit(order: any, orderItem: any){
+      orderItem.status = 4;
+      this.apiService.updateOrderItems(order, orderItem).subscribe();
 
     }
  
-    Button_delivered(){
+    Button_delivered(order: any, orderItem: any){
+      orderItem.status = 5;
+      this.apiService.updateOrderItems(order, orderItem).subscribe();
 
     }
  
   statusDesc?: any
 
-
 }
+

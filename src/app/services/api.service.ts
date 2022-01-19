@@ -77,8 +77,7 @@ export class APIService
 
   updateOrderItems(order: any, orderItem: any)
   {
-    console.log(order.orderId)
-    console.log(orderItem.status + "api test")
+
     return this.httpClient.put(`${this.API}/orders/${order.orderId}/items/${orderItem.itemId}`, { number: orderItem.number, orderItemSatusID: orderItem.status, text: orderItem.text }, httpOptions)
   }
 }

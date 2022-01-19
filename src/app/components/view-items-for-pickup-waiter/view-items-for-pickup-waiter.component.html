@@ -1,27 +1,27 @@
 <p>view-items-for-pickup-waiter works!</p>
 <h1>Orders to Deliver</h1>
+<div class="item-container">
 <ng-container *ngFor="let order of allOrders">
     <ng-container *ngFor="let items of order.orderedItems">
-    <mat-card>
-        <mat-card-title>
-            <ng-container *ngFor="let itemInfo of allItemsInformation">
-                <ng-container *ngIf="itemInfo.itemId===items.itemId">{{itemInfo.title}}</ng-container>
-            </ng-container>
-        </mat-card-title>
-        <mat-card-content>
-            Table ID: {{order.tableId}} <br>
-            Quantity:{{items.number}}<br>
-            OrderID: {{order.orderId}}
-        </mat-card-content>
-        <mat-card-actions align="end">
-            <ng-container *ngIf="items.status===1"><button mat-raised-button (click)="Button_intransit()" >update to "in-transit"</button></ng-container>
-            <ng-container *ngIf="items.status===2"><button mat-raised-button (click)="Button_delivered()">update to "delivered"</button></ng-container>
-        </mat-card-actions>
-    </mat-card>
+        <ng-container *ngIf="items.status === 3 || items.status === 4">
+            <mat-card class="card">
+                <mat-card-title>
+                    <ng-container *ngFor="let itemInfo of allItemsInformation">
+                        <ng-container *ngIf="itemInfo.itemId===items.itemId">{{itemInfo.title}}</ng-container>
+                    </ng-container>
+                </mat-card-title>
+                <mat-card-content>
+                    Table ID: {{order.tableId}} <br>
+                    Quantity:{{items.number}}<br>
+                    OrderID: {{order.orderId}}
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <ng-container *ngIf="items.status===3"><button mat-raised-button (click)="Button_intransit(order, items)" >update to "in-transit"</button></ng-container>
+                    <ng-container *ngIf="items.status===4"><button mat-raised-button (click)="Button_delivered(order, items)">update to "delivered"</button></ng-container>
+                </mat-card-actions>
+            </mat-card>
+        </ng-container>
     </ng-container>
   <br>
 </ng-container>
-
-
-  <button (click)="onClick()">ASKLDAKJS</button>
-
+</div>
