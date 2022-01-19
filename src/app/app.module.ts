@@ -20,6 +20,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatTabsModule } from '@angular/material/tabs';
+import { KitchenNavComponent } from './components/kitchen-nav/kitchen-nav.component';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ViewOrderWaiterComponent,
     ViewRequestWaiterComponent,
     ViewOrdersKitchenComponent,
-    ViewItemsForPickupWaiterComponent
+    ViewItemsForPickupWaiterComponent,
+    KitchenNavComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatCardModule,
     MatInputModule,
     MatRadioModule,
-    DragDropModule
+    DragDropModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
