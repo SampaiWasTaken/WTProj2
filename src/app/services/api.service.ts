@@ -5,7 +5,7 @@ import { Request } from '../request';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDI1MTA1MzgsImV4cCI6MTY0Mjc2OTczOH0.-FzCfxzQphZNEhh0DRv9kKJyJheJytsKwXVBmBRboEw'
+    Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDI3ODI4NzAsImV4cCI6MTY0MzA0MjA3MH0.XqviJ5NnbbrDbf-Nfmj0hyl8ccEbPoF_uzNWG8MemSU'
   })
 };
 
