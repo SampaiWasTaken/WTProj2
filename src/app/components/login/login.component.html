@@ -1,28 +1,23 @@
-<div class="container">
-    <div class="col-md-6 col-md-offset-3 loginBox">
-        <h3>Log In</h3>
-        <p>{{message}}</p>
+<div class="logincontainer">
+    <div class="login">
+        <h1 style="text-align: center">Log In</h1>
+        <h2 style="text-align: center;">{{message}}</h2>
         <form [formGroup]="loginForm">
-            <div class="form-group clearfix">
-                <label class="col-md-3 col-sm-5 col-xs-12" for="username">Userid</label>
-                <div class="col-md-9 col-sm-7 col-xs-12">
-                    <input class="form-control" formControlName="username" type="text" />
-                    <div>
-                        <div>Userid is required</div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group clearfix">
-                <label class="col-md-3 col-sm-5 col-xs-12" for="pw">Password</label>
-                <div class="col-md-9 col-sm-7 col-xs-12">
-                    <input class="form-control" formControlName="pw" type="password" />
-                    <div>
-                        <div>Password is required</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 form-group text-right"><button class="btn btn-success" type="submit" (click)="login()">Login</button>
-            </div>
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" type="text" />
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="pw" type="text" />
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button color=primary type="submit" (click)="login()">Login</button>
         </form>
     </div>
+    <br>
 </div>

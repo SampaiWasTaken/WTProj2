@@ -12,7 +12,7 @@ import { APIService } from 'src/app/services/api.service';
 })
 export class LoginComponent implements OnInit
 {
-
+  hide = true
   model: ILogin = { username: "bruv", pw: "kek" }
   loginForm!: FormGroup;
   message!: string;
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit
     //stop here if form is invalid  
     if (this.loginForm.invalid)
     {
-      console.log("test")
+      console.log(this.loginForm.value)
       return;
     }
     else
@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit
     else
     {
       console.log(this.f.value)
-      this.message = "Please check your userid and password";
+      this.message = "Wrong user credentials";
     }
   }
 

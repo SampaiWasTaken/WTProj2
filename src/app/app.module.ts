@@ -26,6 +26,7 @@ import { WaiterNavComponent } from './components/waiter-nav/waiter-nav.component
 import { RoutingModule } from './routing/routing-routing.module'
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './services/auth.guard';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AuthGuard } from './services/auth.guard';
     WaiterNavComponent
   ],
   imports: [
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
     RoutingModule,
