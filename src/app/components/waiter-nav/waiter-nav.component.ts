@@ -1,15 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-waiter-nav',
   templateUrl: './waiter-nav.component.html',
   styleUrls: ['./waiter-nav.component.css']
 })
-export class WaiterNavComponent implements OnInit {
+export class WaiterNavComponent implements OnInit
+{
 
-  constructor() { }
+  constructor(private router: Router, private authService: AuthService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
   }
 
+  logout()
+  {
+    console.log('logout');
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }

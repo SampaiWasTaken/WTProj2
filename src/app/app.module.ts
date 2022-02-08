@@ -23,7 +23,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTabsModule } from '@angular/material/tabs';
 import { KitchenNavComponent } from './components/kitchen-nav/kitchen-nav.component';
 import { WaiterNavComponent } from './components/waiter-nav/waiter-nav.component';
-
+import { RoutingModule } from './routing/routing-routing.module'
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -38,9 +40,11 @@ import { WaiterNavComponent } from './components/waiter-nav/waiter-nav.component
     WaiterNavComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    RoutingModule,
     BrowserModule,
     HttpClientModule,
-    FormsModule,
     MatCheckboxModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -56,7 +60,7 @@ import { WaiterNavComponent } from './components/waiter-nav/waiter-nav.component
     DragDropModule,
     MatTabsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

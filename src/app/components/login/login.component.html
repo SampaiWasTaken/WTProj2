@@ -1,1 +1,28 @@
-<p>Login works</p>
+<div class="container">
+    <div class="col-md-6 col-md-offset-3 loginBox">
+        <h3>Log In</h3>
+        <p>{{message}}</p>
+        <form [formGroup]="loginForm">
+            <div class="form-group clearfix">
+                <label class="col-md-3 col-sm-5 col-xs-12" for="username">Userid</label>
+                <div class="col-md-9 col-sm-7 col-xs-12">
+                    <input class="form-control" formControlName="username" type="text" />
+                    <div>
+                        <div>Userid is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-md-3 col-sm-5 col-xs-12" for="pw">Password</label>
+                <div class="col-md-9 col-sm-7 col-xs-12">
+                    <input class="form-control" formControlName="pw" type="password" />
+                    <div>
+                        <div>Password is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 form-group text-right"><button class="btn btn-success" type="submit" (click)="login()">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

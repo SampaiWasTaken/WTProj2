@@ -17,11 +17,18 @@ export class ViewItemsKitchenComponent implements OnInit
   totalCat: number[] = [];
   constructor(private apiService: APIService) { }
 
+  test(a: any) 
+  {
+
+  }
+
   ngOnInit(): void
   {
     this.apiService.getMenuItems().subscribe(res => this.allItems = res)
     this.apiService.getCategories().subscribe(res => this.categories = res)
   }
+
+
 
   setAvailable(item: any)
   {
