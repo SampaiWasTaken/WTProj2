@@ -18,12 +18,12 @@ export class RequestWaiterNotificationComponent implements OnInit {
   constructor(private _snackBar: MatSnackBar) {}
   ngOnInit(): void {
 
-    //this.updateSubscription = interval(3000).subscribe(
-     // (val) => {
+   // this.updateSubscription = interval(10000).subscribe(
+   //  (val) => {
 
     //    this._snackBar.open("myMessage", "action");
 
-      // });
+    //   });
  
 
     //this.requestPermission();  //jo wollte eigentlich die firebase api verwenden, habe aber keine zeit mehr mich in das backend der anderen gruppe einzulesen und die haben auch keine zeit mehr mir kurz zu helfen, tjo kann man nix machen

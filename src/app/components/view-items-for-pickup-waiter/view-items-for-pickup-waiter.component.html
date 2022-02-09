@@ -1,9 +1,8 @@
-<p>view-items-for-pickup-waiter works!</p>
-<h1>Orders to Deliver</h1>
+<h1>Orders to Deliver:</h1>
 
 <ng-container *ngFor="let order of allOrders">
     <ng-container *ngFor="let items of order.orderedItems">
-        <ng-container *ngIf="items.status === 3 || items.status === 4">
+        <ng-container *ngIf="items.status === 3 || items.status === 5">
             <mat-card>
                 <mat-card-title>
                     <ng-container *ngFor="let itemInfo of allItemsInformation">
@@ -17,7 +16,7 @@
                 </mat-card-content>
                 <mat-card-actions align="end">
                     <ng-container *ngIf="items.status===3"><button mat-raised-button (click)="Button_intransit(order, items)" >update to "in-transit"</button></ng-container>
-                    <ng-container *ngIf="items.status===4"><button mat-raised-button (click)="Button_delivered(order, items)">update to "delivered"</button></ng-container>
+                    <ng-container *ngIf="items.status===5"><button mat-raised-button (click)="Button_delivered(order, items)">update to "delivered"</button></ng-container>
                 </mat-card-actions>
             </mat-card>
         </ng-container>
