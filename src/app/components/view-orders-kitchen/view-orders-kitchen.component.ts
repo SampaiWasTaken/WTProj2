@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/services/api.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Subscription, Observable, interval } from 'rxjs';
+
 
 @Component({
   selector: 'app-view-orders-kitchen',
@@ -16,19 +18,54 @@ export class ViewOrdersKitchenComponent implements OnInit
   allOrders: any = [];
   orders: any = [];
 
+  updateAllOrders: any = [];
+  updateMenuItems: any = [];
+
+  private updateSub?: Subscription;
 
   ngOnInit(): void
+  {
+    this.initItems();
+    this.updateSub = interval(3000).subscribe(res => this.updateItems())
+  }
+
+  initItems()
   {
     this.apiService.getOrdersKitchen().subscribe(res =>
     {
       this.allOrders = res
-      this.orders = this.allOrders.filter((el: any) => el.status)
+      this.orders = this.allOrders.filter((el: any) => el.status != 5)
     })
 
     this.apiService.getMenuItems().subscribe(res => 
     {
       this.menuItems = res;
-      console.log(this.menuItems)
+    })
+  }
+
+  updateItems()
+  {
+    this.apiService.getOrdersKitchen().subscribe(res =>
+    {
+      this.updateAllOrders = res
+      let updateOrders = this.updateAllOrders.filter((el: any) => el.status != 5)
+      if (updateOrders.length != this.orders.length)
+      {
+        let diff = updateOrders.splice(this.orders.length, updateOrders.length)
+        console.log(diff)
+        this.orders.push(...diff)
+      }
+    })
+
+    this.apiService.getMenuItems().subscribe(res => 
+    {
+      this.updateMenuItems = res;
+      if (this.updateMenuItems.length != this.menuItems.length)
+      {
+        let diff = this.updateMenuItems.splice(this.menuItems.length, this.updateMenuItems.length)
+        console.log(diff)
+        this.menuItems.push(...diff)
+      }
     })
   }
 

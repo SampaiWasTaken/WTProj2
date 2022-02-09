@@ -28,7 +28,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { initializeApp } from "firebase/app";
 initializeApp(environment.firebase);
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RoutingModule } from './routing/routing-routing.module'
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './services/auth.guard';

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription, Observable, interval } from 'rxjs';
 import { APIService } from '../../services/api.service';
 
 @Component({
@@ -15,20 +16,47 @@ export class ViewItemsKitchenComponent implements OnInit
   selCat: number[] = [];
   unselCat: number[] = [];
   totalCat: number[] = [];
+
+  updateCats: any = [];
+  updateMenuItems: any = [];
+  private updateSub?: Subscription;
   constructor(private apiService: APIService) { }
 
-  test(a: any) 
+  ngOnInit(): void
   {
-
+    this.initItems()
+    this.updateSub = interval(3000).subscribe(res => this.updateItems())
   }
 
-  ngOnInit(): void
+  initItems()
   {
     this.apiService.getMenuItems().subscribe(res => this.allItems = res)
     this.apiService.getCategories().subscribe(res => this.categories = res)
   }
 
-
+  updateItems()
+  {
+    this.apiService.getMenuItems().subscribe(res => 
+    {
+      this.updateMenuItems = res;
+      if (this.updateMenuItems.length != this.allItems.length)
+      {
+        let diff = this.updateMenuItems.splice(this.allItems.length, this.updateMenuItems.length)
+        console.log(diff)
+        this.allItems.push(...diff)
+      }
+    })
+    this.apiService.getCategories().subscribe(res => 
+    {
+      this.updateCats = res;
+      if (this.updateCats.length != this.categories.length)
+      {
+        let diff = this.updateCats.splice(this.categories.length, this.updateCats.length)
+        console.log(diff)
+        this.categories.push(...diff)
+      }
+    })
+  }
 
   setAvailable(item: any)
   {
