@@ -65,7 +65,7 @@ export class APIService
   setRequest(request: any)
   {
     //console.log("Why isnt this working the first time sheeesh")
-    return this.httpClient.put(`${this.API}/guestrequest/${request.guestReguestID}`, new Request(3, request.tableID), httpOptions);
+    return this.httpClient.put(`${this.API}/guestrequest/${request.guestReguestID}`, new Request(5, request.tableID), httpOptions);
 
   }
 
