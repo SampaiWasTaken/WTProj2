@@ -38,7 +38,6 @@ export class ViewOrderWaiterComponent implements OnInit
               }
            }
           return inserOrder 
-        
         })
 
         for(let i = 0; i<oldorders.length; i++){
