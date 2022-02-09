@@ -29,6 +29,10 @@ import { environment } from '../environments/environment';
 import { initializeApp } from "firebase/app";
 initializeApp(environment.firebase);
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { RoutingModule } from './routing/routing-routing.module'
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './services/auth.guard';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -44,9 +48,12 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     RequestWaiterNotificationComponent
   ],
   imports: [
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RoutingModule,
     BrowserModule,
     HttpClientModule,
-    FormsModule,
     MatCheckboxModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -69,7 +76,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     }),
     MatSnackBarModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

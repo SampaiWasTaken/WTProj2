@@ -5,14 +5,13 @@ import { APIService } from '../../services/api.service';
   selector: 'app-view-order-waiter',
   templateUrl: './view-order-waiter.component.html',
   styleUrls: ['./view-order-waiter.component.css']
-  
+
 })
 
 
 
-export class ViewOrderWaiterComponent implements OnInit {
-
-
+export class ViewOrderWaiterComponent implements OnInit
+{
   allOrders: any = []
   constructor(private apiService: APIService) { }
 
@@ -25,7 +24,6 @@ export class ViewOrderWaiterComponent implements OnInit {
       this.allOrders = this.allOrders.filter((o: any) => { return o.status !== 3 })
 
     })
-
 
     this.apiService.getMenuItems().subscribe((res: any) =>
     {
@@ -60,12 +58,11 @@ export class ViewOrderWaiterComponent implements OnInit {
       {
         let currentItemId = this.requestedItemData.orderedItems[i].itemId;
         this.requestedItemData.orderedItems[i].itemDetails = this.allItemsInformation.filter((i: any) => { return i.itemId === currentItemId })[0]
-
       }
     }
 
   }
-  
+
 
 
 }

@@ -1,1 +1,23 @@
-<p>Login works</p>
+<div class="logincontainer">
+    <div class="login">
+        <h1 style="text-align: center">Log In</h1>
+        <h2 style="text-align: center;">{{message}}</h2>
+        <form [formGroup]="loginForm">
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" type="text" />
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="pw" type="text" />
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button color=primary type="submit" (click)="login()">Login</button>
+        </form>
+    </div>
+    <br>
+</div>

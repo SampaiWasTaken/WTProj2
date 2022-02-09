@@ -1,15 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-kitchen-nav',
   templateUrl: './kitchen-nav.component.html',
   styleUrls: ['./kitchen-nav.component.css']
 })
-export class KitchenNavComponent implements OnInit {
+export class KitchenNavComponent implements OnInit
+{
 
-  constructor() { }
+  constructor(private router: Router, private authService: AuthService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
+  }
+
+  logout()
+  {
+    console.log('logout');
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

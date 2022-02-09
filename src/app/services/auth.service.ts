@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ILogin } from '../interfaces/login';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +29,12 @@ export class AuthService
   getKey()
   {
     return this.authKey;
+  }
+
+  logout(): void
+  {
+    localStorage.setItem('isLoggedIn', 'false');
+    localStorage.removeItem('token')
   }
 }
 

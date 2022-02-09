@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Request } from './../request';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcmlvIiwicGFzc3dvcmQiOiJZYWhvbyIsImlhdCI6MTY0NDMzMzY5OSwiZXhwIjoxNjQ0NTkyODk5fQ.Z_oJDVbCPsK6tI7hzweM_GkYKRJ5R14PDwSk4nTqdeA'
-  })
-};
+
+var httpHeader = new HttpHeaders({ 'Content-Type': 'application/json' })
+var authKey = localStorage.getItem('token')
+if (authKey) httpHeader = httpHeader.append('Authorization', authKey)
+var httpOptions = { headers: httpHeader };
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,18 @@ const httpOptions = {
 export class APIService
 {
 
+
   API: string = 'https://webtech.salespool.at'
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { this.init() }
+
+  init()
+  {
+    httpHeader = new HttpHeaders({ 'Content-Type': 'application/json' })
+    authKey = localStorage.getItem('token')
+    if (authKey) httpHeader = httpHeader.append('Authorization', authKey)
+    httpOptions = { headers: httpHeader };
+  }
 
   getMenuItems()
   {
@@ -72,12 +81,28 @@ export class APIService
 
   getOrderItems(order: any)
   {
-    return this.httpClient.get(`${this.API}/orders/${order.orderId}/items`)
+    return this.httpClient.get(`${this.API}/orders/${order.orderId}/items`, httpOptions)
   }
 
   updateOrderItems(order: any, orderItem: any)
   {
-
     return this.httpClient.put(`${this.API}/orders/${order.orderId}/items/${orderItem.itemId}`, { number: orderItem.number, orderItemSatusID: orderItem.status, text: orderItem.text }, httpOptions)
+  }
+
+  login(user: string, pw: string)
+  {
+    return this.httpClient.post(`${this.API}/authentication/login/`, { username: user, password: pw })
+  }
+
+  getUsers()
+  {
+    return this.httpClient.get(`${this.API}/users`, httpOptions)
+  }
+  getUsersByID(userID: number)
+  {
+
+    this.init()
+    console.log(httpOptions)
+    return this.httpClient.get(`${this.API}/users/${userID}`, httpOptions)
   }
 }
