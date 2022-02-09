@@ -34,7 +34,7 @@ export class ViewOrdersKitchenComponent implements OnInit
     this.apiService.getOrdersKitchen().subscribe(res =>
     {
       this.allOrders = res
-      this.orders = this.allOrders.filter((el: any) => el.status != 5)
+      this.orders = this.allOrders.filter((el: any) => el.status != 4)
     })
 
     this.apiService.getMenuItems().subscribe(res => 
@@ -48,7 +48,7 @@ export class ViewOrdersKitchenComponent implements OnInit
     this.apiService.getOrdersKitchen().subscribe(res =>
     {
       this.updateAllOrders = res
-      let updateOrders = this.updateAllOrders.filter((el: any) => el.status != 5)
+      let updateOrders = this.updateAllOrders.filter((el: any) => el.status != 4)
       if (updateOrders.length != this.orders.length)
       {
         let diff = updateOrders.splice(this.orders.length, updateOrders.length)
