@@ -5,7 +5,7 @@ import { Request } from './../request';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDI3ODI4NzAsImV4cCI6MTY0MzA0MjA3MH0.XqviJ5NnbbrDbf-Nfmj0hyl8ccEbPoF_uzNWG8MemSU'
+    Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcmlvIiwicGFzc3dvcmQiOiJZYWhvbyIsImlhdCI6MTY0NDMzMzY5OSwiZXhwIjoxNjQ0NTkyODk5fQ.Z_oJDVbCPsK6tI7hzweM_GkYKRJ5R14PDwSk4nTqdeA'
   })
 };
 
@@ -31,7 +31,7 @@ export class APIService
 
   getStatusDesc() //what each status number -> 1 = open,...
   {
-    return this.httpClient.get(`${this.API}/orders/status`, httpOptions)
+    return this.httpClient.get(`${this.API}/resources/orderstatuslist`, httpOptions)
   }
 
   getOrders() { }

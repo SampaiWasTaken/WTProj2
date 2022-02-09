@@ -23,7 +23,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTabsModule } from '@angular/material/tabs';
 import { KitchenNavComponent } from './components/kitchen-nav/kitchen-nav.component';
 import { WaiterNavComponent } from './components/waiter-nav/waiter-nav.component';
-
+import { RequestWaiterNotificationComponent } from './components/request-waiter-notification/request-waiter-notification.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { initializeApp } from "firebase/app";
+initializeApp(environment.firebase);
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,8 @@ import { WaiterNavComponent } from './components/waiter-nav/waiter-nav.component
     ViewOrdersKitchenComponent,
     ViewItemsForPickupWaiterComponent,
     KitchenNavComponent,
-    WaiterNavComponent
+    WaiterNavComponent,
+    RequestWaiterNotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +60,14 @@ import { WaiterNavComponent } from './components/waiter-nav/waiter-nav.component
     MatInputModule,
     MatRadioModule,
     DragDropModule,
-    MatTabsModule
+    MatTabsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
