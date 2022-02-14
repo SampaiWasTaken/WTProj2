@@ -28,6 +28,7 @@ export class ViewItemsForPickupWaiterComponent implements OnInit {
       
   }
 
+  /** Gets all the data from our database that is requiered for this view */
   getData():void{
     this.apiService.getMenuItems().subscribe((res: any) =>
     {
@@ -50,13 +51,14 @@ export class ViewItemsForPickupWaiterComponent implements OnInit {
       }) // Change === LATER!!!!
     })
   }
-
+    /** changes the status of an item in an order. Status will be set to 5 */
     Button_intransit(order: any, orderItem: any){
       orderItem.status = 5;
       this.apiService.updateOrderItems(order, orderItem).subscribe();
 
     }
  
+    /** changes the status of an item in an order. Status will be set to 4 */
     Button_delivered(order: any, orderItem: any){
       orderItem.status = 4;
       this.apiService.updateOrderItems(order, orderItem).subscribe();

@@ -19,6 +19,11 @@ export class ViewRequestWaiterComponent implements OnInit {
     private cdr: ChangeDetectorRef, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.requestData();
+  }
+
+  //** Continuosly updates the data in a fixed interval and checks for changes. If a change is detected, a snackbar is opened. */
+  requestData(){
     this.updateSubscription = interval(5000).subscribe(
       (val) => { this.apiService.getRequests().subscribe(res =>
         {
@@ -40,14 +45,10 @@ export class ViewRequestWaiterComponent implements OnInit {
   
       })
   }
+
   
+  /** Changes the Status of a given request to completed */
   requestProcessed(req: any){
-
-  // WHY ISNT THE *NGFOR NOT UPDATING ?!!?!?!?
-  //https://stackoverflow.com/questions/53203224/my-view-does-not-update-when-i-change-my-array-in-ngfor
-  //no idea seemed iteresting the Stackoverflow link
-
-  //BRUH WHY IS IT NOW WORKING WHEN I CALL NGONINIT AGAIN WTF
     this.apiService.setRequest(req).subscribe( bruh => {this.ngOnInit()});
 
   }

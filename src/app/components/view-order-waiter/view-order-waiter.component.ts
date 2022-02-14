@@ -25,6 +25,7 @@ export class ViewOrderWaiterComponent implements OnInit
     
   }
 
+  /** Gets all the data needed for this view */
    getData():void {
     this.apiService.getOrdersKitchen().subscribe(res =>
       {
@@ -63,6 +64,8 @@ export class ViewOrderWaiterComponent implements OnInit
       //console.log(this.allOrders)
   }
 
+
+  /** Methode is called when the Panel is extended. It is used to Store the state of the Panel (useful when updating the data or changing the view) */
   openPanel(order: any){
     for(let j = 0; j<this.allOrders.length; j++){
       if(this.allOrders[j].orderId === order.orderId){
@@ -74,6 +77,7 @@ export class ViewOrderWaiterComponent implements OnInit
     //console.log(this.allOrders)
   }
 
+  /** Methode is called when the Panel is closed. It is used to Store the state of the Panel (useful when updating the data or changing the view) */
   closePanel(order: any){
     for(let j = 0; j<this.allOrders.length; j++){
       if(this.allOrders[j].orderId === order.orderId){
@@ -93,7 +97,8 @@ export class ViewOrderWaiterComponent implements OnInit
   allItemsInformation?: any;
   statusDesc?: any
 
-  onSelect(id: number): void
+  /** Was used to show more information of a selected order, in a seperate Panel. Didn't really work on mobile and is not used anymore.  */
+  private onSelect(id: number): void
   {
 
     if (this.selectedItem === id)
