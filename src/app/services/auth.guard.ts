@@ -22,6 +22,7 @@ export class AuthGuard implements CanActivate
     return false;
   }
 
+  /** cgecks if there is a loggend in user in current session */
   public isLoggedIn(): boolean
   {
     let status = false;

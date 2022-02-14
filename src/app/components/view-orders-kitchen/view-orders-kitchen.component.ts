@@ -29,6 +29,7 @@ export class ViewOrdersKitchenComponent implements OnInit
     this.updateSub = interval(3000).subscribe(res => this.updateItems())
   }
 
+  /** Initializes items on first load */
   initItems()
   {
     this.apiService.getOrdersKitchen().subscribe(res =>
@@ -43,6 +44,7 @@ export class ViewOrdersKitchenComponent implements OnInit
     })
   }
 
+  /** Called to update items. Only Items not previously in the item lists will be added to the already existing Arrays. */
   updateItems()
   {
     this.apiService.getOrdersKitchen().subscribe(res =>
@@ -69,11 +71,15 @@ export class ViewOrdersKitchenComponent implements OnInit
     })
   }
 
+  /** Sets the status of an order. */
   setStatus(order: any)
   {
     this.apiService.updateOrdersKitchen(order).subscribe();
   }
 
+  /** Sets a custom comment for items in an order.
+   * Handeled by inputfields
+   */
   addComment(order: any)
   {
     for (let item of order.orderedItems)
@@ -83,11 +89,13 @@ export class ViewOrdersKitchenComponent implements OnInit
     }
   }
 
+  /** Used for debugging purposes */
   updateStatusUpdate(item: any)
   {
     console.log("changed to " + item.status)
   }
 
+  /** Updates the status for the given item in an order. */
   updateStatus(order: any)
   {
     for (let item of order.orderedItems)
@@ -97,11 +105,13 @@ export class ViewOrdersKitchenComponent implements OnInit
     }
   }
 
+  /** Used for debugging purposes */
   updateTextUpdate(item: any)
   {
     console.log("changed to " + item.text)
   }
 
+  /** Used for Material Dropboxes in order to rearrange items */
   drop(event: CdkDragDrop<string[]>, order: any)
   {
     moveItemInArray(order.orderedItems, event.previousIndex, event.currentIndex);

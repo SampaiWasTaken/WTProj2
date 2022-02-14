@@ -16,6 +16,7 @@ export class AuthService
 
   URL_API = "https://webtech.salespool.at"
 
+
   login(username: string, pw: string)
   {
     return this.httpClient.post<any>(`${this.URL_API}/authentication/login/`, { username, pw })
@@ -26,11 +27,13 @@ export class AuthService
       )
   }
 
+  /** returns authorization key */
   getKey()
   {
     return this.authKey;
   }
 
+  /** Logout handler */
   logout(): void
   {
     localStorage.setItem('isLoggedIn', 'false');
