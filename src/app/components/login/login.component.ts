@@ -26,8 +26,6 @@ export class LoginComponent implements OnInit
     private apiService: APIService
   ) { }
 
-
-
   ngOnInit(): void
   {
     this.apiService.init();
@@ -41,6 +39,9 @@ export class LoginComponent implements OnInit
 
   get f() { return this.loginForm; }
 
+  /** login handler. 
+   * Parses username and password fields
+   */
   login()
   {
 
@@ -57,6 +58,7 @@ export class LoginComponent implements OnInit
     }
   }
 
+  /** checks if the user is authorized */
   handleLogin(response: any)
   {
     if (Number.isInteger(response.userID))
@@ -77,11 +79,15 @@ export class LoginComponent implements OnInit
     }
   }
 
+  /** Handles the users route.
+   * If the user is a waiter he is redirected to the waiter page
+   * If the user is kitchen-staff he is redirected to the kitchen page
+   */
   handleRoute(user: any)
   {
-    if (user.roles[0] === 2)
+    if (user.roles.contains(2))
       this.router.navigate(["/waiter-nav"]);
-    else if (user.roles[0] === 3)
+    else if (user.roles.contains(3))
       this.router.navigate(["/kitchen-nav"]);
     else
       this.router.navigate(["/login"]);

@@ -28,12 +28,14 @@ export class ViewItemsKitchenComponent implements OnInit
     this.updateSub = interval(3000).subscribe(res => this.updateItems())
   }
 
+  /** Initializes Items on first load */
   initItems()
   {
     this.apiService.getMenuItems().subscribe(res => this.allItems = res)
     this.apiService.getCategories().subscribe(res => this.categories = res)
   }
 
+  /** Called to update items. Only Items not previously in the item lists will be added to the already existing Arrays. */
   updateItems()
   {
     this.apiService.getMenuItems().subscribe(res => 
@@ -58,16 +60,23 @@ export class ViewItemsKitchenComponent implements OnInit
     })
   }
 
+  /** Sets a menuitem to be available */
   setAvailable(item: any)
   {
     item.status = 1
     this.apiService.updateMenuItem(item).subscribe()
   }
+
+  /** Sets a menuitem to be unavailable */
   setUnavailable(item: any)
   {
     item.status = 2
     this.apiService.updateMenuItem(item).subscribe()
   }
+
+  /** Used to check the value of the tag checkboxes. 
+   * Checkboxes that became unselected are saved in unselCat and vice versa. 
+   * If an item was in unselected and became selected it is removed from the unselected Array */
   checkCheckBoxvalue(event: any)
   {
     if (event.checked)
@@ -82,6 +91,7 @@ export class ViewItemsKitchenComponent implements OnInit
     }
   }
 
+  /** Updates categories for menu items by creating a new array based on preselected and newly selected checkboxes */
   updateCategories(item: any)
   {
     this.totalCat = item.category
