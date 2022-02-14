@@ -44,7 +44,7 @@ export class ViewItemsKitchenComponent implements OnInit
       if (this.updateMenuItems.length != this.allItems.length)
       {
         let diff = this.updateMenuItems.splice(this.allItems.length, this.updateMenuItems.length)
-        console.log(diff)
+        //console.log(diff)
         this.allItems.push(...diff)
       }
     })
@@ -54,7 +54,7 @@ export class ViewItemsKitchenComponent implements OnInit
       if (this.updateCats.length != this.categories.length)
       {
         let diff = this.updateCats.splice(this.categories.length, this.updateCats.length)
-        console.log(diff)
+        //console.log(diff)
         this.categories.push(...diff)
       }
     })

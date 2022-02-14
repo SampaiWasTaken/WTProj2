@@ -70,7 +70,7 @@ export class ViewOrdersKitchenComponent implements OnInit
       if (updateOrders.length != this.orders.length)
       {
         let diff = updateOrders.splice(this.orders.length, updateOrders.length)
-        console.log(diff)
+        //console.log(diff)
         this.orders.push(...diff)
       }
     })
@@ -81,7 +81,7 @@ export class ViewOrdersKitchenComponent implements OnInit
       if (this.updateMenuItems.length != this.menuItems.length)
       {
         let diff = this.updateMenuItems.splice(this.menuItems.length, this.updateMenuItems.length)
-        console.log(diff)
+        //console.log(diff)
         this.menuItems.push(...diff)
       }
     })
@@ -101,14 +101,14 @@ export class ViewOrdersKitchenComponent implements OnInit
     for (let item of order.orderedItems)
     {
       this.apiService.updateOrderItems(order, item).subscribe();
-      console.log("Item ID " + item.itemId + "with text " + item.text)
+      //console.log("Item ID " + item.itemId + "with text " + item.text)
     }
   }
 
   /** Used for debugging purposes */
   updateStatusUpdate(item: any)
   {
-    console.log("changed to " + item.status)
+    //console.log("changed to " + item.status)
   }
 
   /** Updates the status for the given item in an order. */
@@ -117,14 +117,14 @@ export class ViewOrdersKitchenComponent implements OnInit
     for (let item of order.orderedItems)
     {
       this.apiService.updateOrderItems(order, item).subscribe();
-      console.log("Item ID " + item.itemId + "with status " + item.status)
+      //console.log("Item ID " + item.itemId + "with status " + item.status)
     }
   }
 
   /** Used for debugging purposes */
   updateTextUpdate(item: any)
   {
-    console.log("changed to " + item.text)
+    //console.log("changed to " + item.text)
   }
 
   /** Used for Material Dropboxes in order to rearrange items */

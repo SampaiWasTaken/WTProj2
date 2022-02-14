@@ -19,7 +19,7 @@ export class KitchenNavComponent implements OnInit
 
   logout()
   {
-    console.log('logout');
+    //console.log('logout');
     this.authService.logout();
     this.router.navigate(['/login']);
   }
