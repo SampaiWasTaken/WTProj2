@@ -25,6 +25,7 @@ export class ViewItemsKitchenComponent implements OnInit
   ngOnInit(): void
   {
     this.initItems()
+
     this.updateSub = interval(3000).subscribe(res => this.updateItems())
   }
 
@@ -38,26 +39,29 @@ export class ViewItemsKitchenComponent implements OnInit
   /** Called to update items. Only Items not previously in the item lists will be added to the already existing Arrays. */
   updateItems()
   {
-    this.apiService.getMenuItems().subscribe(res => 
+    if (localStorage.getItem('isLoggedIn') == "true")
     {
-      this.updateMenuItems = res;
-      if (this.updateMenuItems.length != this.allItems.length)
+      this.apiService.getMenuItems().subscribe(res => 
       {
-        let diff = this.updateMenuItems.splice(this.allItems.length, this.updateMenuItems.length)
-        console.log(diff)
-        this.allItems.push(...diff)
-      }
-    })
-    this.apiService.getCategories().subscribe(res => 
-    {
-      this.updateCats = res;
-      if (this.updateCats.length != this.categories.length)
+        this.updateMenuItems = res;
+        if (this.updateMenuItems.length != this.allItems.length)
+        {
+          let diff = this.updateMenuItems.splice(this.allItems.length, this.updateMenuItems.length)
+          console.log(diff)
+          this.allItems.push(...diff)
+        }
+      })
+      this.apiService.getCategories().subscribe(res => 
       {
-        let diff = this.updateCats.splice(this.categories.length, this.updateCats.length)
-        console.log(diff)
-        this.categories.push(...diff)
-      }
-    })
+        this.updateCats = res;
+        if (this.updateCats.length != this.categories.length)
+        {
+          let diff = this.updateCats.splice(this.categories.length, this.updateCats.length)
+          console.log(diff)
+          this.categories.push(...diff)
+        }
+      })
+    }
   }
 
   /** Sets a menuitem to be available */

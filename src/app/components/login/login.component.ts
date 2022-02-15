@@ -85,11 +85,16 @@ export class LoginComponent implements OnInit
    */
   handleRoute(user: any)
   {
-    if (user.roles.contains(2))
+    if (user.roles.includes(2))
       this.router.navigate(["/waiter-nav"]);
-    else if (user.roles.contains(3))
+    else if (user.roles.includes(3))
       this.router.navigate(["/kitchen-nav"]);
     else
+    {
+      this.message = "Unauthorized to log into kitchen/waiter services"
+      this.authService.logout();
       this.router.navigate(["/login"]);
+
+    }
   }
 }
