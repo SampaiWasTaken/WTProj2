@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit
     //stop here if form is invalid  
     if (this.loginForm.invalid)
     {
-      console.log(this.loginForm.value)
+      //console.log(this.loginForm.value)
       return;
     }
     else
@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit
   {
     if (Number.isInteger(response.userID))
     {
-      console.log("Login successful");
+      //console.log("Login successful");
       //this.authService.authLogin(this.model);  
       localStorage.setItem('isLoggedIn', "true");
       localStorage.setItem('token', response.token);
@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit
     }
     else
     {
-      console.log(this.f.value)
+      //console.log(this.f.value)
       this.message = "Wrong user credentials";
     }
   }

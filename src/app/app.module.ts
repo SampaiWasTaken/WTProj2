@@ -26,8 +26,8 @@ import { WaiterNavComponent } from './components/waiter-nav/waiter-nav.component
 import { RequestWaiterNotificationComponent } from './components/request-waiter-notification/request-waiter-notification.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { initializeApp } from "firebase/app";
-initializeApp(environment.firebase);
+//import { initializeApp } from "firebase/app";
+//initializeApp(environment.firebase);
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RoutingModule } from './routing/routing-routing.module'
 import { ReactiveFormsModule } from '@angular/forms';

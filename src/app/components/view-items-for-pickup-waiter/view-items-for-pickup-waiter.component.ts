@@ -31,6 +31,7 @@ export class ViewItemsForPickupWaiterComponent implements OnInit
 
   }
 
+  /** Gets all the data from our database that is requiered for this view */
   getData(): void
   {
     if (localStorage.getItem('isLoggedIn') == "true")
@@ -42,25 +43,34 @@ export class ViewItemsForPickupWaiterComponent implements OnInit
 
       this.apiService.getOrdersKitchen().subscribe(res =>
       {
-        this.allOrders = res;
-
-        //checks if a single item isnt delivered
-        this.allOrders = this.allOrders.filter((o: any) =>
+        this.apiService.getMenuItems().subscribe((res: any) =>
         {
-          let addOrderBool = false;
-          for (let i = 0; i < o.orderedItems.length; i++)
+          this.allItemsInformation = res;
+        })
+
+        this.apiService.getOrdersKitchen().subscribe(res =>
+        {
+          this.allOrders = res;
+
+          //checks if a single item isnt delivered
+          this.allOrders = this.allOrders.filter((o: any) =>
           {
-            if (o.orderedItems[i].status === 3 || o.orderedItems[i].status === 5)
+            let addOrderBool = false;
+            for (let i = 0; i < o.orderedItems.length; i++)
             {
-              addOrderBool = true;
+              if (o.orderedItems[i].status === 3 || o.orderedItems[i].status === 5)
+              {
+                addOrderBool = true;
+              }
             }
-          }
-          return addOrderBool;
-        }) // Change === LATER!!!!
+            return addOrderBool;
+          }) // Change === LATER!!!!
+        })
       })
     }
   }
 
+  /** changes the status of an item in an order. Status will be set to 5 */
   Button_intransit(order: any, orderItem: any)
   {
     orderItem.status = 5;
@@ -68,14 +78,12 @@ export class ViewItemsForPickupWaiterComponent implements OnInit
 
   }
 
+  /** changes the status of an item in an order. Status will be set to 4 */
   Button_delivered(order: any, orderItem: any)
   {
     orderItem.status = 4;
     this.apiService.updateOrderItems(order, orderItem).subscribe();
-
   }
-
   statusDesc?: any
 
 }
-

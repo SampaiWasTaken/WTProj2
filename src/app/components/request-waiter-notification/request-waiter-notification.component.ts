@@ -31,8 +31,8 @@ export class RequestWaiterNotificationComponent implements OnInit
     //this.requestPermission();  //jo wollte eigentlich die firebase api verwenden, habe aber keine zeit mehr mich in das backend der anderen gruppe einzulesen und die haben auch keine zeit mehr mir kurz zu helfen, tjo kann man nix machen
     //this.listen();
   }
-  requestPermission()
-  {
+  /*
+  requestPermission() {
     const messaging = getMessaging();
     getToken(messaging,
       { vapidKey: environment.firebase.vapidKey }).then(
@@ -62,6 +62,7 @@ export class RequestWaiterNotificationComponent implements OnInit
       this.openSnackBar(myText, "okay");
     });
   }
+  */
 
 
   openSnackBar(myMessage: string, action: string)

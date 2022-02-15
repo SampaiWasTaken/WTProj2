@@ -17,9 +17,10 @@ export class WaiterNavComponent implements OnInit
   {
   }
 
+  /** Logout function that is called by the Logout button  */
   logout()
   {
-    console.log('logout');
+    //console.log('logout');
     this.authService.logout();
     this.router.navigate(['/login']);
   }
