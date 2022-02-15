@@ -9,11 +9,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'kitchen-nav', component: KitchenNavComponent, canActivate: [AuthGuard] },
   { path: 'waiter-nav', component: WaiterNavComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)], //forRoot???
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class RoutingModule { }
