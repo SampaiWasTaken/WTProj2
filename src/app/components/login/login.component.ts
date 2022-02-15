@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit
     else
     {
       var response;
-      this.apiService.login(this.f.controls['username'].value, this.f.controls['pw'].value).subscribe(res => { response = res; console.log(response); this.handleLogin(response) })
+      this.apiService.login(this.f.controls['username'].value, this.f.controls['pw'].value).subscribe(res => { response = res; /*console.log(response);*/ this.handleLogin(response) })
     }
   }
 
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit
       localStorage.setItem('isLoggedIn', "true");
       localStorage.setItem('token', response.token);
       var user;
-      this.apiService.getUsersByID(response.userID).subscribe(res => { user = res; console.log(user); this.handleRoute(user) })
+      this.apiService.getUsersByID(response.userID).subscribe(res => { user = res; /*console.log(user);*/ this.handleRoute(user) })
 
 
     }
