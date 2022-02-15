@@ -30,23 +30,26 @@ export class ViewRequestWaiterComponent implements OnInit
     this.updateSubscription = interval(5000).subscribe(
       (val) =>
       {
-        this.apiService.getRequests().subscribe(res =>
+        if (localStorage.getItem("isLoggedIn") === "true")
         {
           this.apiService.getRequests().subscribe(res =>
           {
-            if (localStorage.getItem('isLoggedIn') == "true")
+            this.apiService.getRequests().subscribe(res =>
             {
-              let oldData = this.allRequests;
-              this.allRequests = res;
-              this.allRequests = this.allRequests.filter((o: any) => { return o.status === 1 })
-              // console.log(this.allRequests)
-              if (oldData.length !== this.allRequests.length && oldData.length < this.allRequests.length)
+              if (localStorage.getItem('isLoggedIn') == "true")
               {
-                this._snackBar.open("new Customer Request", "okay");
+                let oldData = this.allRequests;
+                this.allRequests = res;
+                this.allRequests = this.allRequests.filter((o: any) => { return o.status === 1 })
+                // console.log(this.allRequests)
+                if (oldData.length !== this.allRequests.length && oldData.length < this.allRequests.length)
+                {
+                  this._snackBar.open("new Customer Request", "okay");
+                }
               }
-            }
-          })
-        });
+            })
+          });
+        }
       })
   }
 
